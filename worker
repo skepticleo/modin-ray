@@ -3,5 +3,5 @@ export MEMORY_STORE_SIZE=$(awk "/MemFree/ { printf \"%d \\n\", \$2*1024*0.8}" /p
 export TMPDIR="$(dirname $(mktemp tmp.XXXXXXXXXX -ut))"
 export MEMORY_STORE_SIZE=$(awk "/MemFree/ { printf \"%d \\n\", \$2*1024*0.8}" /proc/meminfo)
 export TMPDIR=/tmp
-ulimit -n 65536; ray start --address=$RAY_HEAD_IP:6379 --object-manager-port=8076 --object-store-memory=$MEMORY_STORE_SIZE --plasma-directory=$TMPDIR --redis-password=xpms1234
+ulimit -n 65536; ray start --address=$RAY_HEAD_IP:6379 --object-manager-port=8076 --object-store-memory=$MEMORY_STORE_SIZE --plasma-directory=$TMPDIR --redis-password=$REDIS_PASSWORD
 cat
